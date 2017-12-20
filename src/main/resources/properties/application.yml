@@ -1,11 +1,11 @@
 server:
   port: ${server.port}
-  ssl:
-    enabled: true
-    key-store: ${key-store:classpath:${app.name}.1.0.0.jks.${spring.profiles.active}}
-    key-store-password: ${app.name}123
-    key-alias: ${key-alias:${app.name}.1.0.0}
-    enabled-protocols: TLSv1,TLSv1.2
+  #ssl:
+  #  enabled: true
+  #  key-store: ${key-store:classpath:${app.name}.1.0.0.jks.${spring.profiles.active}}
+  #  key-store-password: ${app.name}123
+  #  key-alias: ${key-alias:${app.name}.1.0.0}
+  #  enabled-protocols: TLSv1,TLSv1.2
 
 #eureka:
   #client:

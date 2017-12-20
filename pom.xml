@@ -223,6 +223,12 @@
 			<groupId>org.springmodules</groupId>
 			<artifactId>spring-modules-validation</artifactId>
 			<version>0.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
 	</dependencies>
