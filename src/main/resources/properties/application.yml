@@ -1,0 +1,35 @@
+server:
+  port: ${server.port}
+  ssl:
+    enabled: true
+    key-store: ${key-store:classpath:${app.name}.1.0.0.jks.${spring.profiles.active}}
+    key-store-password: ${app.name}123
+    key-alias: ${key-alias:${app.name}.1.0.0}
+    enabled-protocols: TLSv1,TLSv1.2
+
+#eureka:
+  #client:
+    #healthcheck:
+    #  enabled: true
+    #registerWithEureka: true
+    #fetchRegistry: true
+ # instance:
+  #  securePort: ${server.port}
+  #  securePortEnabled: true
+  #  nonSecurePortEnabled: false
+  #  leaseRenewalIntervalInSeconds: 1
+  #  leaseExpirationDurationInSeconds: 2
+  #  metadataMap:
+  #    appOwner: Abraham Alarcon
+  #  preferIpAddress: true
+
+graphql:
+  servlet:
+    mapping: /datastore.gql
+    enabled: true
+    corsEnabled: true
+
+graphiql:
+    mapping: /datastore.giql
+    endpoint: /datastore.giql
+    enabled: true

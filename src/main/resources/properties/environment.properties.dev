@@ -1,0 +1,14 @@
+# Logging Thread Pool Task Executor
+logging.threadPoolTaskExecutor.threadNamePrefix: Logging-
+logging.threadPoolTaskExecutor.corePoolSize: 2
+logging.threadPoolTaskExecutor.maxPoolSize: 2
+logging.threadPoolTaskExecutor.queueCapacity: 500
+
+# Eureka Client registration
+#eureka.client.serviceUrl.defaultZone: https://${peer1}/eureka/,https://${peer2}/eureka/
+
+# Weather Rest connection
+weather.url: http://api.wunderground.com/api/${weather.key}
+weather.retry.policy.maxAttempts: 3
+weather.retry.policy.backOffPeriodMillis: 5000
+hystrix.command.weather.execution.isolation.thread.timeoutInMilliseconds: 2000

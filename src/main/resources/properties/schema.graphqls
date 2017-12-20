@@ -1,0 +1,78 @@
+input DatastoreRequest {
+  conditions: Boolean
+  forecast: Boolean
+  geolookup: Boolean
+  city: String!
+  country: String
+}
+
+type DatastoreResponse {
+  response: Response
+  location: Location
+  forecast: Forecast
+  error: BaseError
+}
+
+type BaseError {
+  code: String
+  message: String
+  status: Int
+}
+
+type Response {
+  version: String
+  termsofService: String
+  features: Features
+}
+
+type Features {
+  geolookup: Int
+  conditions: Int
+  forecast: Int
+}
+
+type Forecast {
+  txt_forecast: TxtForecast
+}
+
+type TxtForecast {
+  date: String
+  forecastday: [ForecastDay]
+}
+
+type ForecastDay {
+  period: Int
+  icon: String
+  icon_url: String
+  title: String
+  fcttext: String
+  fcttext_metric: String
+  pop: String
+}
+
+type Location {
+  type: String
+  country: String
+  country_iso3166: String
+  country_name: String
+  state: String
+  city: String
+  tz_short: String
+  tz_long: String
+  lat: String
+  lon: String
+  zip: String
+  magic: String
+  wmo: String
+  l: String
+  requesturl: String
+  wuiurl: String
+}
+
+type Query {
+  pull(request: DatastoreRequest): DatastoreResponse
+}
+
+schema {
+  query: Query
+}
