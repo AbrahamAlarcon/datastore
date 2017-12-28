@@ -2,6 +2,7 @@ package org.abrahamalarcon.datastore.dao;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.abrahamalarcon.datastore.dom.request.DatastoreRequest;
+import org.abrahamalarcon.datastore.dom.response.BaseError;
 import org.abrahamalarcon.datastore.dom.response.DatastoreResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -35,11 +36,18 @@ public class WeatherDAO
     }
 
     @Cacheable("stores")
-    @HystrixCommand(commandKey = "weather")
+    @HystrixCommand(commandKey = "weather", fallbackMethod = "fallback")
     public DatastoreResponse get(String url) throws URISyntaxException {
         url = this.url + url;
         ResponseEntity<DatastoreResponse> response = callIt(url);
         return response.getBody();
+    }
+
+    public DatastoreResponse fallback(String url) throws URISyntaxException {
+        DatastoreResponse response = new DatastoreResponse();
+        response.setError(new BaseError());
+        response.getError().setMessage("Not available!, going thru fallback");
+        return response;
     }
 
     public ResponseEntity<DatastoreResponse> callIt(String url) throws URISyntaxException {
