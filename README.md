@@ -1,6 +1,10 @@
 
 # Project Name
 DataStore
+The idea of this project is to show how a simple RESTful service can be transformed in a data store service,
+allowing the service client to decide what data wants back.
+Here I am just showing the potential of using frameworks such as GraphQL, which would help to develop a new generation
+of services based on Datasets and no only on Resources.
 
 # Technology stack
 Spring Boot
